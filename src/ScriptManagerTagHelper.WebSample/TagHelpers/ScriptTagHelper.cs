@@ -38,7 +38,7 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             _scriptManager.AddScript(src);
 
             // suppress output
-            output.SuppressOutput();
+            //output.SuppressOutput();
 
         }
     }
