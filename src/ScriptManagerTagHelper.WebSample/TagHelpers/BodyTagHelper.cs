@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
@@ -18,6 +19,9 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
         private readonly IOptions<ScriptManagerOptions> _scriptManagerOptions;
         private readonly IHostingEnvironment _hostingEnvironment;
 
+        public override int Order => int.MaxValue - 100;
+
+
         public BodyTagHelper(IScriptManager scriptManager,
             IOptions<ScriptManagerOptions> scriptManagerOptions,
             IHostingEnvironment hostingEnvironment)
@@ -27,24 +31,37 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
 
             // hostingEnvironment gets me path to file system file
+            // example of how to get files: https://github.com/aspnet/live.asp.net/blob/dev/src/live.asp.net/TagHelpers/ScriptInliningTagHelper.cs
 
             // from string, need to figure out if it's http type or file system type,
             // don't minimizie if not file system type
 
-            var allScripts = _scriptManager.Scripts; // all my scripts to generate
 
-           
-            var combine = _scriptManagerOptions.Value.CombinedSrc;
+            var sb = new StringBuilder();
+            foreach (var scriptReference in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))
+            {
+                sb.AppendLine($"<script type='text/javascript' src='{scriptReference.ScriptPath}'></script>");
+            }
+            //output.Content.AppendHtml(sb.ToString());
 
-            var combinedScriptTexts = _scriptManager.ScriptTexts;
+            //output.PostContent.SetContent(sb.ToString());
+
+            output.PostContent.SetHtmlContent(sb.ToString());
+
+
+            //var combine = _scriptManagerOptions.Value.CombinedSrc;
+
+            //var combinedScriptTexts = _scriptManager.ScriptTexts;
 
             // output filenames first, then combine in script tag the combined scripttexts
             // .Append (return multiple times so OK to return without variable, resharper area)
-            output.PostContent.Append("this is all the script tags with ...");
+            //output.PostContent.Append("this is all the script tags with ...");
 
             // NOTE: make sure to add CRC cache breaker on javascripts
 

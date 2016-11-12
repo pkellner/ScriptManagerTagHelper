@@ -23,22 +23,25 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             _scriptManager = scriptManager;
         }
 
+        public string IncludeOrderPriority { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
 
             var src = output.Attributes["src"].Value.ToString(); // get here and not property because other tag helpers might have run
-             // src is going to look /foo/abc.js
+                                                                 // src is going to look /foo/abc.js
 
             // find file passe in to source
 
 
             // add file to script manager (de-duplicate in script manager)
 
-            _scriptManager.AddScript(src);
+            var xx = output.Attributes["IncludeOrderPriority"].ToString();
+
+            _scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
 
             // suppress output
-            //output.SuppressOutput();
+            output.SuppressOutput();
 
         }
     }

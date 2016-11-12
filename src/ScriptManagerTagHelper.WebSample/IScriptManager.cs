@@ -8,9 +8,9 @@ namespace ScriptManagerTagHelper.WebSample
 {
     public interface IScriptManager
     {
-        void AddScript(string script);
+        void AddScript(ScriptReference script);
 
-        IEnumerable<string> Scripts { get; }
+        IEnumerable<ScriptReference> Scripts { get; }
         IEnumerable<string> ScriptTexts { get; }
         void AddScriptText(string scriptTextExecute);
     }
