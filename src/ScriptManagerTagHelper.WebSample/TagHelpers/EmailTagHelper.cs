@@ -18,13 +18,13 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
             public override void Process(TagHelperContext context, TagHelperOutput output)
             {
-                var mailToWorks = output.Attributes["MailTo"].Value.ToString();
+                //var mailToWorks = output.Attributes["MailTo"].Value.ToString();
 
-                output.TagName = "a";    // Replaces <email> with <a> tag
+                //output.TagName = "a";    // Replaces <email> with <a> tag
 
-                var address = MailTo + "@" + EmailDomain;
-                output.Attributes.SetAttribute("href", "mailto:" + address);
-                output.Content.SetContent(address);
+                //var address = MailTo + "@" + EmailDomain;
+                //output.Attributes.SetAttribute("href", "mailto:" + address);
+                //output.Content.SetContent(address);
             }
         }
 }

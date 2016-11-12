@@ -8,6 +8,7 @@ namespace ScriptManagerTagHelper.WebSample.Controllers
 {
     public class HomeController : Controller
     {
+        [TypeFilter(typeof(PostRazorResultFilter))]
         public IActionResult Index()
         {
             return View();

@@ -13,8 +13,8 @@ namespace ScriptManagerTagHelper.WebSample
     /// </summary>
     public class ScriptManager : IScriptManager
     {
-        public IEnumerable<ScriptReference> Scripts => _scripts;
-        public IEnumerable<string> ScriptTexts => _scriptTexts;
+        public  List<ScriptReference> Scripts => _scripts;
+        public  List<string> ScriptTexts => _scriptTexts;
 
         // getter only prop retrieves scripts
         // this is the filenames (or URL's) of the script tags

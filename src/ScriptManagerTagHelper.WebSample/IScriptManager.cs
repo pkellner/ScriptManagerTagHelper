@@ -10,8 +10,8 @@ namespace ScriptManagerTagHelper.WebSample
     {
         void AddScript(ScriptReference script);
 
-        IEnumerable<ScriptReference> Scripts { get; }
-        IEnumerable<string> ScriptTexts { get; }
+        List<ScriptReference> Scripts { get; }
+        List<string> ScriptTexts { get; }
         void AddScriptText(string scriptTextExecute);
     }
 }

@@ -15,11 +15,14 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
     
     public class BodyTagHelper : TagHelper
     {
+        public override int Order => int.MaxValue - 100;
+
+
         private readonly IScriptManager _scriptManager;
         private readonly IOptions<ScriptManagerOptions> _scriptManagerOptions;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public override int Order => int.MaxValue - 100;
+      
 
 
         public BodyTagHelper(IScriptManager scriptManager,

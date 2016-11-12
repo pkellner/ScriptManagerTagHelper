@@ -32,6 +32,8 @@ namespace ScriptManagerTagHelper.WebSample
             // Add framework services.
             services.AddMvc();
 
+           
+
 
             //////////////// start (not needed)
             services.AddScoped<IScriptManager,ScriptManager>(); // lifetime of http request
@@ -97,7 +99,7 @@ namespace ScriptManagerTagHelper.WebSample
            // env.WebRootFileProvider
 
 
-
+            app.UseMiddleware<MyMiddleware>();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
