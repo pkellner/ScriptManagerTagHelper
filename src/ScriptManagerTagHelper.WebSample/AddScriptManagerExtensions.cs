@@ -15,8 +15,10 @@ namespace ScriptManagerTagHelper.WebSample
             Action<ScriptManagerOptions> setupAction)
         {
 
-            services.AddScoped<IScriptManager, ScriptManager>(); // lifetime of http request
-          
+           // services.AddScoped<IScriptManager, ScriptManager>(); // lifetime of http request
+
+            services.AddSingleton<IScriptManager, ScriptManager>(); 
+
             // others can add other configurations
             // config is in class so that we have access environment
             services.TryAddEnumerable(
