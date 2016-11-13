@@ -28,8 +28,6 @@ namespace ScriptManagerTagHelper.WebSample
         {
             if (context.Request.Method.ToUpper() == "GET")
             {
-                
-
                 Stream originalStream = context.Response.Body;
 
                 using (MemoryStream newStream = new MemoryStream())
@@ -42,17 +40,29 @@ namespace ScriptManagerTagHelper.WebSample
                     newStream.Seek(0, SeekOrigin.Begin);
                     StreamReader reader = new StreamReader(newStream);
                     var htmlData = reader.ReadToEnd();
-
+                    StringBuilder sb = new StringBuilder();
                     if (_scriptManager.Scripts.Count > 0)
                     {
-                        StringBuilder sb = new StringBuilder();
+
                         foreach (var scriptRef in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))
                         {
                             sb.AppendLine(string.Format("<script src='{0}' ></script>", scriptRef.ScriptPath));
                         }
-                        htmlData = htmlData.Replace("</body>", "</body>" + sb);
-
                     }
+
+                    if (_scriptManager.ScriptTexts.Count > 0)
+                    {
+                        foreach (var scriptText in _scriptManager.ScriptTexts)
+                        {
+                            sb.AppendLine(string.Format("<script>{0}</script>", scriptText));
+                        }
+                    }
+
+                    if (sb.Length > 0)
+                    {
+                        htmlData = htmlData.Replace("</body>", "</body>" + sb);
+                    }
+
                     await context.Response.WriteAsync(htmlData);
                 }
             }

@@ -32,25 +32,15 @@ namespace ScriptManagerTagHelper.WebSample
             // Add framework services.
             services.AddMvc();
 
-           
-
-
-            //////////////// start (not needed)
-            services.AddScoped<IScriptManager,ScriptManager>(); // lifetime of http request
             services.AddTransient<ScriptManagerOptionsSetup>();
 
 
             // others can add other configurations
             // config is in class so that we have access environment
-            services.TryAddEnumerable(
-                ServiceDescriptor.Transient<IConfigureOptions<ScriptManagerOptions>,
-                    ScriptManagerOptionsSetup>());
-            //////////////////////// end
-            
-            
-             
-
-
+            ////services.TryAddEnumerable(
+            ////    ServiceDescriptor.Transient<IConfigureOptions<ScriptManagerOptions>,
+            ////        ScriptManagerOptionsSetup>());
+         
             ////////  either of next two (not both)
             // simple way
             services.AddScriptManager(
@@ -58,7 +48,7 @@ namespace ScriptManagerTagHelper.WebSample
 
 
             // simple way takes default options
-            services.AddScriptManager();
+            //services.AddScriptManager();
 
 
 

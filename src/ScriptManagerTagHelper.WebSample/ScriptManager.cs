@@ -24,7 +24,6 @@ namespace ScriptManagerTagHelper.WebSample
 
         public void AddScript(ScriptReference scriptReference)
         {
-
             if (Scripts.All(x => x.ScriptPath != scriptReference.ScriptPath))
             {
                 _scripts.Add(scriptReference);
