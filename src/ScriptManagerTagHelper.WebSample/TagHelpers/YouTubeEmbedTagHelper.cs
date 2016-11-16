@@ -39,13 +39,13 @@ namespace TagHelpersLocal.Web.TagHelpers
             // add guid to .nyste (same for all, global guid)
             var sb = new StringBuilder();
             sb.AppendFormat
-            ("<div  class=\"nsyte-{0}\" id=\"{1}\"    width=\"{2}\" height=\"{3}\"></div>",
+            ("<div  id=\"nsyte-{0}\" youtubeid=\"{1}\"    width=\"{2}\" height=\"{3}\"></div>",
                 uniqueVal, YouTubeId, FrameWidth, FrameHeight);
 
 
             var scriptTextExecute = string.Format(@"
                  $(document).ready(function () {{
-                        $('.nsyte-{0}').nonSuckyYouTubeEmbed();
+                        $('#nsyte-{0}').nonSuckyYouTubeEmbed();
                 }});
             ", uniqueVal);
             _scriptManager.AddScriptText(scriptTextExecute);

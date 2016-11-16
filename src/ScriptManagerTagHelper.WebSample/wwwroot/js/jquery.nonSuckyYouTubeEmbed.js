@@ -34,7 +34,7 @@
 
 		this.each(function() {
 			$this = $(this);
-			videoID = $this.attr('id');
+			videoID = $this.attr('youtubeid');
 			thumbAlt = ($this.data('alt')) ? $this.data('alt') : '';
 			thumb = '<img src="http://i.ytimg.com/vi/'+videoID+'/0.jpg" style="'+s.thumbStyle+'" alt="'+thumbAlt+'" />';
 			playBtn = '<img style="'+s.playBtnStyle+'" src="'+s.playBtnSrc+'" alt="Play" />';
@@ -44,7 +44,7 @@
 
 		return this.bind('click', function() {
 			$this = $(this);
-			videoID = $this.attr('id');
+			videoID = $this.attr('youtubeid');
 			width = ($this.data('width')) ? $this.data('width') : s.defaultWidth;
 			height = ($this.data('height')) ? $this.data('height') : s.defaultHeight;
 			paddingBottom = ((height / width) * 100) + '%';
