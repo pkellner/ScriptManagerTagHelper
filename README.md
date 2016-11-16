@@ -43,4 +43,15 @@ This tag helper is based on the [nonSuckyYouTubeEmbed jQuery Plugin](https://git
   {no scripts}
 
 
+ <hr/>
  
+ [Notes From Hackathon While Working With Taylor Mullen](https://gist.github.com/NTaylorMullen/b16b4ec9bac1bfd72b6db9c54da05203)
+ 
+ 
+ 
+ Current Project Started at MVC Summit 2016 Hackathon November 2017 by
+ [Peter Kellner](http://peterkellner.net) and [Gabriel Enea](https://github.com/dotnet18) (with some early help from
+ Paul Litwin).  Major help from ASP.NET team member [Taylor Mullen](https://gist.github.com/NTaylorMullen) during and after the hackathon.
+ 
+ ![Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen](images\HackathonTeamMembers.gif)
+
