@@ -45,6 +45,20 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             // from string, need to figure out if it's http type or file system type,
             // don't minimizie if not file system type
 
+            //                        // update html
+            //                        StringBuilder sb = new StringBuilder();
+            //                        if (_scriptManager.Scripts.Count > 0)
+            //                        {
+            //                            foreach (var scriptRef in _scriptManager.Scripts)
+            //                            {
+            //                                sb.AppendLine(string.Format("<script src='{0}' ></script>", scriptRef));
+            //                            }
+            //                            if (sb.Length > 0)
+            //                            {
+            //                                responseBody = responseBody.Replace("</body>", sb + "</body>");
+            //                            }
+            //                        }
+
 
             var sb = new StringBuilder();
             foreach (var scriptReference in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))

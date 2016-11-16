@@ -8,7 +8,7 @@ namespace ScriptManagerTagHelper.WebSample.Controllers
 {
     public class HomeController : Controller
     {
-        [TypeFilter(typeof(PostRazorResultFilter))]
+       
         public IActionResult Index()
         {
             return View();
@@ -19,6 +19,7 @@ namespace ScriptManagerTagHelper.WebSample.Controllers
             return View();
         }
 
+       
         public IActionResult Videos()
         {
             return View();

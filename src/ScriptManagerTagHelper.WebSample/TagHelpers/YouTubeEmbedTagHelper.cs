@@ -15,7 +15,7 @@ namespace TagHelpersLocal.Web.TagHelpers
     {
         private readonly IScriptManager _scriptManager;
 
-        private static string UniquePageClassName = "z93ec171-0c0f-4a6e-9629-2b24a9e5b502";
+        //private static string UniquePageClassName = "z93ec171-0c0f-4a6e-9629-2b24a9e5b502";
 
         public YouTubeEmbedTagHelper(IScriptManager scriptManager)
         {
@@ -38,21 +38,29 @@ namespace TagHelpersLocal.Web.TagHelpers
 
             _scriptManager.AddScript(new ScriptReference("/js/jquery.nonSuckyYouTubeEmbed.js", 1000));
 
-
+            var uniqueVal = Guid.NewGuid().ToString("D");
 
             // add guid to .nyste (same for all, global guid)
             var sb = new StringBuilder();
             sb.AppendFormat
                 ("<div  class=\"nsyte-{0}\" id=\"{1}\"    width=\"{2}\" height=\"{3}\"></div>", 
-                UniquePageClassName,YouTubeId,FrameWidth,FrameHeight);
+                uniqueVal,YouTubeId,FrameWidth,FrameHeight);
 
+            
 
             var scriptTextExecute = String.Format(@"
                  $(document).ready(function () {{
                         $('.nsyte-{0}').nonSuckyYouTubeEmbed();
                 }});
-            ", UniquePageClassName);
+            ", uniqueVal);
             _scriptManager.AddScriptText(scriptTextExecute);
+
+            sb.AppendLine(" Count: " + _scriptManager.ScriptTexts.Count);
+            //foreach (var l in _scriptManager.ScriptTexts)
+            //{
+            //    sb.AppendLine("---" + l);
+            //}
+
 
 
             output.Content = output.Content.SetHtmlContent(sb.ToString());

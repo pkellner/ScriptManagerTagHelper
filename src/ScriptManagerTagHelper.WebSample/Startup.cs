@@ -29,6 +29,8 @@ namespace ScriptManagerTagHelper.WebSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IScriptManager, ScriptManager>(); // lifetime of http request 
+
             // Add framework services.
             services.AddMvc();
 
@@ -85,12 +87,7 @@ namespace ScriptManagerTagHelper.WebSample
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-           // env.WebRootFileProvider
-
-
-            app.UseMiddleware<MyMiddleware>();
-
+        { 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -105,6 +102,8 @@ namespace ScriptManagerTagHelper.WebSample
             }
 
             app.UseStaticFiles();
+
+          
 
             app.UseMvc(routes =>
             {

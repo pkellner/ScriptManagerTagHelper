@@ -16,7 +16,7 @@ namespace ScriptManagerTagHelper.WebSample
         {
 
             //services.AddScoped<IScriptManager, ScriptManager>(); // lifetime of http request (NOT SURE WHY THIS IS NOT ENOUGH)
-            services.AddSingleton<IScriptManager, ScriptManager>(); 
+            //services.AddSingleton<IScriptManager, ScriptManager>(); 
 
             // others can add other configurations
             // config is in class so that we have access environment
