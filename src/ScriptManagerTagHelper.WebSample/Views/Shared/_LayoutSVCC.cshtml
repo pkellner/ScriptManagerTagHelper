@@ -1,0 +1,73 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sessions - Silicon Valley Code Camp – Bootstrap</title>
+    <link rel="stylesheet" property="stylesheet" href="/css/main-92f76bfe92.css" type="text/css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="" >
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="/images/logo.png" alt="Silicon Valley Code Camp">
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <p>OCTOBER 1 &amp; 2, 2016</p>
+                </div>
+
+                <div class="col-md-4">
+                    <p>
+                        <strong>Evergreen Valley College</strong> 3095 Yerba Buena Rd San Jose, California 95135
+                    </p>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-default navbar-static-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Videos">Videos</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        </ul>   
+                        
+                    </div>
+
+                </div>
+            </nav>
+        </header>
+        
+      
+
+        <main class="panel panel-default">
+            <div class="panel-body">
+                    @RenderBody()
+            </div>
+        </main>
+
+        <div>
+            <Email mail-to="abc"   ></Email>
+        </div>
+
+        <footer class="row">
+            <div class="col-sm-6">
+                <p>Code Stars Summit and Silicon Valley Code Camp (tm) are trademarks of 73rd Street Associates (Copyright © 2016)</p>
+
+                <p>Site Built with ASP.NET CORE 1.0</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" IncludeOrderPriority="-500"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" IncludeOrderPriority="-400"></script>
+</body>
+
+</html>
