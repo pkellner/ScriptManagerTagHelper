@@ -56,13 +56,6 @@ namespace TagHelpersLocal.Web.TagHelpers
             _scriptManager.AddScriptText(scriptTextExecute);
 
             sb.AppendLine(" Count: " + _scriptManager.ScriptTexts.Count);
-            //foreach (var l in _scriptManager.ScriptTexts)
-            //{
-            //    sb.AppendLine("---" + l);
-            //}
-
-
-
             output.Content = output.Content.SetHtmlContent(sb.ToString());
 
         }

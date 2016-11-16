@@ -45,6 +45,12 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
                 {
                     sb.AppendLine(string.Format("<script src='{0}' ></script>", scriptRef.ScriptPath));
                 }
+                sb.AppendLine("<script type='text/javascript'>");
+                foreach (var scriptText in _scriptManager.ScriptTexts)
+                {
+                    sb.AppendLine(scriptText);
+                }
+                sb.AppendLine("</script>");
             }
             output.PostContent.AppendHtml(sb.ToString());
         }
