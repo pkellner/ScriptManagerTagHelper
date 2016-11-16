@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Text;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using ScriptManagerTagHelper.WebSample;
 
-namespace TagHelpersLocal.Web.TagHelpers
+namespace ScriptManagerTagHelper.WebSample.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
     [HtmlTargetElement("YouTubeEmbed")]
@@ -22,10 +21,6 @@ namespace TagHelpersLocal.Web.TagHelpers
 
         public string YouTubeId { get; set; }
 
-        public string FrameWidth { get; set; } = "480";
-
-
-        public string FrameHeight { get; set; } = "360";
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -39,8 +34,8 @@ namespace TagHelpersLocal.Web.TagHelpers
             // add guid to .nyste (same for all, global guid)
             var sb = new StringBuilder();
             sb.AppendFormat
-            ("<div  id=\"nsyte-{0}\" youtubeid=\"{1}\"    width=\"{2}\" height=\"{3}\"></div>",
-                uniqueVal, YouTubeId, FrameWidth, FrameHeight);
+            ("<div  id=\"nsyte-{0}\" youtubeid=\"{1}\" \"></div>",
+                uniqueVal, YouTubeId);
 
 
             var scriptTextExecute = string.Format(@"
