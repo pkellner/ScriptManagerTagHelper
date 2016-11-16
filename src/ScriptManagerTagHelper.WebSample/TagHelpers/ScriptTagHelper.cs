@@ -25,20 +25,28 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
         public string IncludeOrderPriority { get; set; }
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
 
+            // DID BODY NOW, NEED TO DO THIS ONE
+            // var childContent = output.Content.is
             var src = output.Attributes["src"].Value.ToString(); // get here and not property because other tag helpers might have run
-                                                                 // src is going to look /foo/abc.js
+            //                                                     // src is going to look /foo/abc.js
 
             // find file passe in to source
 
 
             // add file to script manager (de-duplicate in script manager)
 
-            var xx = output.Attributes["IncludeOrderPriority"].ToString();
+            //var xx = output.Attributes["IncludeOrderPriority"].ToString();
 
             _scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
+
+           // await output.SuppressOutput();
+
+            //var childContent = output.Content.IsModified
+            //    ? output.Content.GetContent()
+            //    : (await output.GetChildContentAsync()).GetContent();
 
             // suppress output
             output.SuppressOutput();

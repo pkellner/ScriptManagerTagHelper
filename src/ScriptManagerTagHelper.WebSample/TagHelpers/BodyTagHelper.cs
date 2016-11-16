@@ -36,8 +36,18 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
         
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            var childContent = output.Content.IsModified
+                ? output.Content.GetContent()
+                : (await output.GetChildContentAsync()).GetContent();
+
+            var updateContent = childContent.Replace("</body>",
+                "<b>CNT:" + _scriptManager.ScriptTexts.Count + "</b></body>");
+
+            output.Content.SetHtmlContent(updateContent);
+
+
 
             // hostingEnvironment gets me path to file system file
             // example of how to get files: https://github.com/aspnet/live.asp.net/blob/dev/src/live.asp.net/TagHelpers/ScriptInliningTagHelper.cs
@@ -60,16 +70,16 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             //                        }
 
 
-            var sb = new StringBuilder();
-            foreach (var scriptReference in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))
-            {
-                sb.AppendLine($"<script type='text/javascript' src='{scriptReference.ScriptPath}'></script>");
-            }
+            //var sb = new StringBuilder();
+            //foreach (var scriptReference in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))
+            //{
+            //    sb.AppendLine($"<script type='text/javascript' src='{scriptReference.ScriptPath}'></script>");
+            //}
             //output.Content.AppendHtml(sb.ToString());
 
             //output.PostContent.SetContent(sb.ToString());
 
-            output.PostContent.SetHtmlContent(sb.ToString());
+            //output.PostContent.SetHtmlContent(sb.ToString());
 
 
             //var combine = _scriptManagerOptions.Value.CombinedSrc;
