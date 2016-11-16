@@ -27,10 +27,16 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            var src = output.Attributes["src"].Value.ToString();
+            _scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
+
+            var childContent = await output.GetChildContentAsync();
+            output.SuppressOutput();
+            
 
             // DID BODY NOW, NEED TO DO THIS ONE
             // var childContent = output.Content.is
-            var src = output.Attributes["src"].Value.ToString(); // get here and not property because other tag helpers might have run
+           // var src = output.Attributes["src"].Value.ToString(); // get here and not property because other tag helpers might have run
             //                                                     // src is going to look /foo/abc.js
 
             // find file passe in to source
@@ -40,7 +46,7 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
             //var xx = output.Attributes["IncludeOrderPriority"].ToString();
 
-            _scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
+            //_scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
 
            // await output.SuppressOutput();
 
@@ -49,7 +55,7 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             //    : (await output.GetChildContentAsync()).GetContent();
 
             // suppress output
-            output.SuppressOutput();
+            //output.SuppressOutput();
 
         }
     }

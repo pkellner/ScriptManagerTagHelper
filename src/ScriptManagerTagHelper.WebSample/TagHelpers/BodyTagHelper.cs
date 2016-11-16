@@ -38,14 +38,22 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var childContent = output.Content.IsModified
+            var bodyContent = output.Content.IsModified
                 ? output.Content.GetContent()
                 : (await output.GetChildContentAsync()).GetContent();
 
-            var updateContent = childContent.Replace("</body>",
-                "<b>CNT:" + _scriptManager.ScriptTexts.Count + "</b></body>");
+            var updatedBodyContent = bodyContent;
 
-            output.Content.SetHtmlContent(updateContent);
+            StringBuilder sb = new StringBuilder();
+            if (_scriptManager.Scripts.Count > 0)
+            {
+                foreach (var scriptRef in _scriptManager.Scripts)
+                {
+                    sb.AppendLine(string.Format("<script src='{0}' ></script>", scriptRef));
+                }
+                updatedBodyContent += sb;
+            }
+            output.Content.SetHtmlContent(updatedBodyContent);
 
 
 
