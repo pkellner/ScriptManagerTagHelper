@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ScriptManagerTagHelper.WebSample.TagHelpers
@@ -12,11 +9,6 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
     public class ScriptTagHelper : TagHelper
     {
         private readonly IScriptManager _scriptManager;
-
-
-        // src is case insenstative
-        // DON'T SRC USE THIS BECAUSE PREVIOUS TAGHELPER RAN ON IT ~ TAG HELPER, MVC SCRIPT TAG HELPER  
-        //public string Src { get; set; }
 
         public ScriptTagHelper(IScriptManager scriptManager)
         {
