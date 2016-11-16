@@ -55,5 +55,6 @@ This tag helper is based on the [nonSuckyYouTubeEmbed jQuery Plugin](https://git
  
  
 ![Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen](/images/HackathonTeamMembers.gif?raw=true)
+
 *Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen*
 
