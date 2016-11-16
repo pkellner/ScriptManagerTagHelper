@@ -54,5 +54,6 @@ This tag helper is based on the [nonSuckyYouTubeEmbed jQuery Plugin](https://git
  Paul Litwin).  Major help from ASP.NET team member [Taylor Mullen](https://gist.github.com/NTaylorMullen) during and after the hackathon.
  
  
- ![Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen](/images/HackathonTeamMembers.gif?raw=true)
+![Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen](/images/HackathonTeamMembers.gif?raw=true)
+*Gabriel Enea, Paul Litwin, Peter Kellner and Taylor Mullen*
 
