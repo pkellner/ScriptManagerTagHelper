@@ -25,8 +25,13 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
             var sb = new StringBuilder();
             if (_scriptManager.Scripts.Count > 0)
             {
-                foreach (var scriptRef in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty))
-                    sb.AppendLine(string.Format("<script src='{0}' ></script>", scriptRef.ScriptPath));
+                foreach (var scriptRef in _scriptManager.Scripts.OrderBy(a => a.IncludeOrderPriorty)) {
+                    sb.Append($"<script src='{scriptRef.ScriptPath}'");
+                    foreach (var attr in scriptRef.ScriptReferenceAttributes) {
+                        sb.Append($" {attr.Name}='{attr.Value}'");
+                    }
+                    sb.AppendLine("></script>");
+                }
                 sb.AppendLine("<script type='text/javascript'>");
                 foreach (var scriptText in _scriptManager.ScriptTexts)
                     sb.AppendLine(scriptText);

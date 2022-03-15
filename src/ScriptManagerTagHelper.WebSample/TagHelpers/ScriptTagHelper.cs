@@ -21,7 +21,15 @@ namespace ScriptManagerTagHelper.WebSample.TagHelpers
         {
             // needed because of builtin tag helper that looks at src
             var src = output.Attributes["src"].Value.ToString();
-            _scriptManager.AddScript(new ScriptReference(src, Convert.ToInt32(IncludeOrderPriority)));
+            foreach (TagHelperAttribute attribute in output.Attributes) {
+                if (attribute.Name == "src") continue;
+                scriptReference.ScriptReferenceAttributes.Add(
+                    new ScriptReferenceAttribute {
+                        Name = attribute.Name,
+                        Value = GetEncodedStringValue(output.Attributes[attribute.Name].Value)
+                    });
+            }
+            _scriptManager.AddScript(scriptReference);
 
             await output.GetChildContentAsync();
             output.SuppressOutput();
